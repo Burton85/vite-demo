@@ -1,0 +1,20 @@
+<script setup lang="ts">
+import { onMounted, reactive, ref, watch } from 'vue';
+import { safariHacker } from '../helper/safariHacker.js';
+
+onMounted(() => {
+  console.log('mounted in the composition api!');
+  safariHacker(document.querySelector('#app'));
+});
+
+// watch(isVip, filterMarkerList);
+</script>
+<template>
+  <div class="container u-plr-2">
+    <nav class="nav u-mtb-2">
+      <router-link :to="'page1'">題目1-1</router-link>
+      <router-link :to="'page2'">題目1-2</router-link>
+    </nav>
+    <router-view></router-view>
+  </div>
+</template>

@@ -27,10 +27,15 @@ function RepoService() {
     axios({
       method: 'get',
       url: API__DOMAIN + _api + ObjtoQuery(_dataObj)
-    }).then(({ data }) => {
-      console.log('RepoService getAPI :', data);
-      _callback(data);
-    });
+    })
+      .then(({ data }) => {
+        console.log('RepoService getAPI :', data);
+        _callback(data);
+      })
+      .catch(err => {
+        console.log('RepoService getAPI :', err);
+        alert(err.message);
+      });
   }
 
   function postAPI(_api, _dataObj, _callback) {
@@ -39,10 +44,15 @@ function RepoService() {
       method: 'post',
       url: API__DOMAIN + _api,
       data: _dataObj
-    }).then(({ data }) => {
-      console.log('RepoService postAPI :', data);
-      _callback(data);
-    });
+    })
+      .then(({ data }) => {
+        console.log('RepoService postAPI :', data);
+        _callback(data);
+      })
+      .catch(err => {
+        console.log('RepoService postAPI :', err);
+        alert(err.message);
+      });
   }
 
   /****************************************************/

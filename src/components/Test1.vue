@@ -26,7 +26,7 @@ RepoServiceObj.onRepoChange(res => {
     <li v-for="repo in repoList" :key="repo.id" class="infinite-list-item">
       <h2>{{ repo.name }}</h2>
       <p>{{ repo.description }}</p>
-      <p>{{ repo.html_url }}</p>
+      <a :href="repo.html_url" target="_blank">{{ repo.html_url }}</a>
     </li>
   </ul>
 </template>

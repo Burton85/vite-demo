@@ -25,6 +25,8 @@ RepoServiceObj.onRepoChange(res => {
   <ul v-infinite-scroll="load" class="infinite-list" style="overflow: auto">
     <li v-for="repo in repoList" :key="repo.id" class="infinite-list-item">
       <h2>{{ repo.name }}</h2>
+      <p>{{ repo.description }}</p>
+      <p>{{ repo.html_url }}</p>
     </li>
   </ul>
 </template>

@@ -8,7 +8,7 @@ function moveToRight(_distance: number) {
   return function (_dom: HTMLDivElement) {
     let domOffset = 0;
     while (domOffset < _distance) {
-      domOffset += 20;
+      domOffset += 5;
       move(domOffset);
     }
     function move(_offset: number) {

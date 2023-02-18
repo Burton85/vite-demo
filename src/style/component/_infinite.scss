@@ -7,12 +7,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
+    font-size: 16px;
+    min-height: 50px;
     background: $gray;
     margin: 10px;
     color: $gray--dark;
     & + .list-item {
       margin-top: 10px;
+    }
+    h2 {
+      font-size: em(20);
+    }
+    p {
+      display: block;
+      font-size: em(16);
     }
   }
 }

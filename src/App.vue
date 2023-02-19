@@ -4,15 +4,25 @@
   </metainfo>
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <br />
+  <transition name="fade">
+    <Loading v-if="isLoading"></Loading>
+  </transition>
   <router-view></router-view>
 </template>
 
 <script lang="ts">
-import { computed, reactive } from 'vue';
+import { computed, reactive, ref, provide } from 'vue';
 import { useMeta } from 'vue-meta';
+import Loading from './components/Loading.vue';
 
 export default {
   setup() {
+    const isLoading = ref<boolean>(false);
+    function setLoading(bol: boolean): void {
+      isLoading.value = bol;
+    }
+    provide('setLoading', setLoading);
+
     const state = reactive({ count: 0 });
 
     function increment() {
@@ -83,11 +93,15 @@ export default {
     // })
     return {
       state,
-      increment
+      increment,
+      isLoading
     };
   },
   mounted() {
     document.dispatchEvent(new Event('render-event'));
+  },
+  components: {
+    Loading
   }
 };
 </script>

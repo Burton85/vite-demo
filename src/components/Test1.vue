@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 import RepoService from '../helper/RepoService.js';
-
+const setLoading: any = inject('setLoading');
+setLoading(true);
 const currentPage = ref(1);
 const repoList = ref([]);
 const load = () => {
+  setLoading(true);
   currentPage.value++;
   RepoServiceObj.getRepoList(currentPage.value);
 };
@@ -13,10 +15,12 @@ const RepoServiceObj: any = new RepoService();
 RepoServiceObj.init();
 RepoServiceObj.onInit(res => {
   console.log(res);
+  setLoading(false);
   repoList.value.push(...res);
 });
 RepoServiceObj.onRepoChange(res => {
   console.log(res);
+  setLoading(false);
   repoList.value.push(...res);
 });
 </script>

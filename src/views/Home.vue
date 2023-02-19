@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref, watch } from 'vue';
+import { onMounted, inject } from 'vue';
 import { safariHacker } from '../helper/safariHacker.js';
+const setLoading: any = inject('setLoading');
 
 onMounted(() => {
   console.log('mounted in the composition api!');
+  setLoading(false);
   safariHacker(document.querySelector('#app'));
 });
 
